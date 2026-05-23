@@ -114,19 +114,19 @@
     }
 
     .list-title {
-        @apply text-2xl font-sans-bold text-primary;
+        @apply text-xl font-sans-bold text-primary;
     }
 
     .list-action {
-        @apply rounded-full border border-black/20 px-4 py-1;
+        @apply rounded-full border border-black/20 px-4 py-2;
     }
 
     .list-action-text {
-        @apply text-lg font-sans-semibold text-primary;
+        @apply text-sm font-sans-semibold text-primary;
     }
 
     .upcoming-card {
-        @apply mr-4 w-44 rounded-2xl border border-black/10 bg-background p-4;
+        @apply mr-4 w-48 rounded-2xl border border-black/10 bg-background p-4;
     }
 
     .upcoming-row {
@@ -134,7 +134,7 @@
     }
 
     .upcoming-icon {
-        @apply size-14;
+        @apply size-10;
     }
 
     .upcoming-price {
@@ -166,7 +166,7 @@
     }
 
     .sub-icon {
-        @apply size-16 rounded-lg;
+        @apply size-12 rounded-lg;
     }
 
     .sub-copy {
@@ -198,7 +198,7 @@
     }
 
     .sub-details {
-        @apply gap-6;
+        @apply gap-2;
     }
 
     .sub-row {
