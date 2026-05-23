@@ -78,15 +78,15 @@
     }
 
     .home-avatar {
-        @apply size-16 rounded-full;
+        @apply size-10 rounded-full;
     }
 
     .home-user-name {
-        @apply ml-4 text-2xl font-sans-bold text-primary;
+        @apply ml-2 text-lg font-sans-bold text-primary;
     }
 
     .home-add-icon {
-        @apply size-12;
+        @apply size-8;
     }
 
     .home-balance-card {
