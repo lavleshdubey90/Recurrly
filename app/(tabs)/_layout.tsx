@@ -1,10 +1,38 @@
-import { tabs } from "@/constants/data";
+import { HOME_SUBSCRIPTIONS, tabs } from "@/constants/data";
 import { colors, components } from "@/constants/theme";
 import { useAuth } from "@clerk/expo";
 import clsx from "clsx";
 import { Redirect, Tabs } from "expo-router";
+import React from "react";
 import { Image, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+
+const SubscriptionsContext = React.createContext<{
+  subscriptions: typeof HOME_SUBSCRIPTIONS;
+  addSubscription: (subscription: typeof HOME_SUBSCRIPTIONS[0]) => void;
+} | undefined>(undefined);
+
+export const useSubscriptions = () => {
+  const context = React.useContext(SubscriptionsContext);
+  if (context === undefined) {
+    throw new Error("useSubscriptions must be used within a SubscriptionsProvider");
+  }
+  return context;
+};
+
+const SubscriptionsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [subscriptions, setSubscriptions] = React.useState(HOME_SUBSCRIPTIONS);
+
+  const addSubscription = (subscription: typeof HOME_SUBSCRIPTIONS[0]) => {
+    setSubscriptions([subscription, ...subscriptions]);
+  };
+
+  return (
+    <SubscriptionsContext.Provider value={{ subscriptions, addSubscription }}>
+      {children}
+    </SubscriptionsContext.Provider>
+  );
+};
 
 const TabIcon = ({ focused, icon }: TabIconProps) => {
     return <View className="tabs-icon">
@@ -34,7 +62,8 @@ export default function TabLayout() {
     }
 
     return (
-        <Tabs screenOptions={{
+        <SubscriptionsProvider>
+            <Tabs screenOptions={{
             headerShown: false,
             tabBarShowLabel: false,
             tabBarStyle: {
@@ -73,5 +102,6 @@ export default function TabLayout() {
                 options={{ href: null }}
             />
         </Tabs>
+        </SubscriptionsProvider>
     )
 }

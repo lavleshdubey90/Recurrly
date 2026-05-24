@@ -26,7 +26,7 @@ const Settings = () => {
   return (
     <SafeAreaView className="flex-1 bg-background">
       <ScrollView className="flex-1" contentContainerClassName="p-5">
-        <Text className="mb-6 text-3xl font-sans-bold text-primary">Settings</Text>
+        <Text className="mb-6 text-2xl font-sans-bold text-primary">Settings</Text>
 
         <View className="rounded-2xl border border-border bg-card p-4">
           <Text className="mb-4 text-lg font-sans-bold text-primary">Account</Text>
